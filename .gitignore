@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# minified build file
+public/bundle.js
