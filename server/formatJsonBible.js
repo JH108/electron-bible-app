@@ -70,32 +70,42 @@ const booksOfBibleInOrder = [
   'Revelation'
 ];
 
-const verifyBible = esvBible => {
+const countChaptersAndVerses = esvBible => {
   let bookArray = [],
       currentBook = '',
       currentChapter = '',
-      // bookCount = 0,
       cc = 0,
       vc = 0;
   for (let book in esvBible) {
-    // bookCount++;
-    _.forEach(esvBible[book], c => cc++)
-    _.forEach(esvBible[book], c => _.forEach(c, v => vc++));
+    _.forEach(esvBible[book], (c) => cc++)
+    _.forEach(esvBible[book], (c) => _.forEach(c, (v) => vc++));
     bookArray.push({
       name: book,
       chapters: cc,
       verses: vc
     });
-    cc = 0
-    vc = 0
-    // esvBible[book]
+    cc = 0;
+    vc = 0;
 
-    // console.log(currentBook, chaptCount, currentChapter, verseCount);
   }
-  // console.log(bookCount);
-  bookArray.sort((a, b) => {
+  return bookArray.sort((a, b) => {
     return booksOfBibleInOrder.indexOf(a.name) - booksOfBibleInOrder.indexOf(b.name);
-  }).forEach(b => console.log(b))
+  });
+};
+
+const getBookOfJoel = (joel) => {
+  let bookChapters = {};
+  let verses = [];
+
+  _.forEach(joel, (chapter, key) => {
+    _.forEach(chapter, (verse, key) => {
+      verses.push({ verse, key });
+    });
+    bookChapters[key] = verses.sort((a, b) => {
+      return parseInt(a.key) - parseInt(b.key)
+    }).map(v => v.verse).join(' ');
+  });
+  return bookChapters;
 };
 
 const bibleStream = fs.createReadStream('./esvBibleJson.json');
@@ -105,5 +115,7 @@ bibleStream
     bible += chunk;
   })
   .on('end', () => {
-    verifyBible(JSON.parse(bible));
+    let parsedBible = JSON.parse(bible);
+    // countChaptersAndVerses(parsedBible);
+    getBookOfJoel(parsedBible.Joel);
   });
