@@ -69,6 +69,24 @@
   background: linear-gradient(135deg, #FDB749 0%, #61412B 100%);
 }
 
+.reading-view-content {
+  height: 834px;
+  width: 1024px;
+  background-color: #A7A7A7;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.reading-view-text {
+  padding: 10px;
+  height: 834px;
+  width: 95%;
+  color: #FDF7F7;
+  font-family: Geneva;
+  font-size: 26px;
+  line-height: 30px;
+}
+
 /*
   Use below to make design responsive based on viewport size if time allows
 */
