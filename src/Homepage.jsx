@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MenuButton from './MenuButton';
 
 class Homepage extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Homepage extends Component {
   render() {
     return (
       <div className="header">
+        <MenuButton />
         <h1 className="esv-bible">
         ESV Bible</h1>
       </div>
