@@ -11,10 +11,10 @@ class ReadingView extends Component {
     };
   }
   componentDidMount() {
-    fetch('/bible')
+    fetch('/bible/Joel/1')
       .then(body => body.json())
       .then(json => this.setState({
-        chapter: json['1']
+        chapter: json
       }));
   }
   render() {
