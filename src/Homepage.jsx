@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MenuButton from './MenuButton';
+import MenuButton from './reuseable-components/MenuButton';
 import sky from 'public/images/fullsizeoutput_155.png';
 
 class Homepage extends Component {
