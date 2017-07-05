@@ -1,0 +1,23 @@
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  height: 100px;
+  width: 1024px;
+  background-color: #918F84;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.esv-bible {
+  height: 60px;
+  width: 218px;
+  color: #FDF7F7;
+  font-family: Geneva;
+  font-size: 48px;
+  line-height: 64px;
+  text-align: center;
+}

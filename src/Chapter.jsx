@@ -11,9 +11,12 @@ class Chapter extends Component {
     } = this.props;
     return (
       <div>
-        { chapter ?
-          map(chapter["1"], (c) => <p>{ c }</p>)
-          : null }
+        {
+          chapter ?
+          <p>{ chapter }</p>
+          //map(chapter["1"], (c) => <p>{ c }</p>)
+          : null
+        }
       </div>
     );
   }

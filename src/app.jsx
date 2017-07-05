@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chapter from './Chapter';
 import { forEach, map } from 'lodash';
+import Homepage from './Homepage';
 
 class App extends Component {
   constructor(props) {
@@ -9,21 +10,27 @@ class App extends Component {
       book: null
     }
   }
-  componentDidMount() {
-    fetch('/bible')
-      .then(data => data.json())
-      .then(json => {
-        console.log(json);
-        this.setState({
-          book: json
-        })
-      });
-  }
+  // componentDidMount() {
+  //   fetch('/bible')
+  //     .then(data => data.json())
+  //     .then(json => {
+  //       this.setState({
+  //         book: json
+  //       })
+  //     });
+  // }
   render() {
     return (
-      <div>
-        Hello I am working!
-        <Chapter chapter={this.state.book} />
+      <div className="app">
+      <Homepage />
+        {
+          map(this.state.book, (chapter, key) => (
+            <Chapter
+              chapter={chapter}
+              key={key}
+            />
+          ))
+        }
       </div>
     );
   }
