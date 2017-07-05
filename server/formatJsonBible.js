@@ -1,7 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
 
-const booksOfBibleInOrder = [
+export const booksOfBibleInOrder = [
   'Genesis',
   'Exodus',
   'Leviticus',
@@ -93,29 +93,32 @@ const countChaptersAndVerses = esvBible => {
   });
 };
 
-const getBookOfJoel = (joel) => {
+export const getBook = (book) => {
   let bookChapters = {};
   let verses = [];
 
-  _.forEach(joel, (chapter, key) => {
+  _.forEach(book, (chapter, key) => {
     _.forEach(chapter, (verse, key) => {
       verses.push({ verse, key });
     });
+    // sorting to ensure order of verses since objects aren't guarenteed to be ordered
     bookChapters[key] = verses.sort((a, b) => {
       return parseInt(a.key) - parseInt(b.key)
     }).map(v => v.verse).join(' ');
   });
+
   return bookChapters;
 };
 
-const bibleStream = fs.createReadStream('./esvBibleJson.json');
-let bible = '';
-bibleStream
-  .on('data', chunk => {
-    bible += chunk;
-  })
-  .on('end', () => {
-    let parsedBible = JSON.parse(bible);
-    // countChaptersAndVerses(parsedBible);
-    getBookOfJoel(parsedBible.Joel);
-  });
+// code to read the bible from a file with slight modifications depending on the file type
+// const bibleStream = fs.createReadStream('./esvBibleJson.json');
+// let bible = '';
+// bibleStream
+//   .on('data', chunk => {
+//     bible += chunk;
+//   })
+//   .on('end', () => {
+//     let parsedBible = JSON.parse(bible);
+//     // countChaptersAndVerses(parsedBible);
+//     getBookOfJoel(parsedBible.Joel);
+//   });
