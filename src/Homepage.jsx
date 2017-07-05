@@ -7,10 +7,15 @@ class Homepage extends Component {
   }
   render() {
     return (
-      <div className="header">
-        <MenuButton />
-        <h1 className="esv-bible">
-        ESV Bible</h1>
+      <div className="homepage">
+        <div className="header">
+          <MenuButton />
+          <h1 className="esv-bible">
+          ESV Bible</h1>
+        </div>
+        <div className="footer">
+          <h1 className="start-reading-now">START READING NOW</h1>
+        </div>
       </div>
     );
   }

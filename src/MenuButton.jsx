@@ -2,7 +2,7 @@ import React from 'react';
 
 const MenuButton = () => {
   return (
-    <svg width="51" height="42" viewBox="0 0 51 42" xmlns="http://www.w3.org/2000/svg" >
+    <svg className="menu" width="51" height="42" viewBox="0 0 51 42" xmlns="http://www.w3.org/2000/svg" >
       <title>Header Menu</title>
       <defs>
         <filter x="-37.1%" y="-38.5%" width="174.3%" height="200%" filterUnits="objectBoundingBox" id="a">
@@ -45,14 +45,14 @@ const MenuButton = () => {
         <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1"/>
         </filter>
       </defs>
-      <g filter="url(#a)" transform="translate(8 5)" fill="none" fill-rule="evenodd" stroke-linecap="square">
+      <g filter="url(#a)" transform="translate(8 5)" fill="none" fillRule="evenodd" strokeLinecap="square">
         <use fill="#000" filter="url(#b)" xlinkHref="#c"/>
-        <use stroke="#6E6B6B" stroke-width="4" xlinkHref="#c"/>
+        <use stroke="#6E6B6B" strokeWidth="4" xlinkHref="#c"/>
         <use fill="#000" filter="url(#d)" xlinkHref="#e"/>
-        <use stroke="#6E6B6B" stroke-width="4" xlinkHref="#e"/>
+        <use stroke="#6E6B6B" strokeWidth="4" xlinkHref="#e"/>
         <g>
           <use fill="#000" filter="url(#f)" xlinkHref="#g"/>
-          <use stroke="#6E6B6B" stroke-width="4" xlinkHref="#g"/>
+          <use stroke="#6E6B6B" strokeWidth="4" xlinkHref="#g"/>
         </g>
       </g>
     </svg>

@@ -3,21 +3,58 @@
   justify-content: center;
 }
 
+.homepage {
+  width: 1024px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .header {
   height: 100px;
   width: 1024px;
   background-color: #918F84;
   display: flex;
-  justify-content: center;
+  align-items: center
+}
+
+.footer {
+  height: 90px;
+  width: 1024px;
+  background-color: #918F84;
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  margin-left: 36px;
+}
+
+.the-heavens-declare {
+  height: 76px;
+  width: 662px;
+  color: #9EDB58;
+  font-family: "Apple Chancery";
+  font-size: 24px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.start-reading-now {
+  height: 33px;
+  width: 236px;
+  color: #C0390B;
+  font-family: "Apple Chancery";
+  font-size: 20px;
+  line-height: 31px;
+  text-align: center;
 }
 
 .esv-bible {
-  height: 60px;
-  width: 218px;
   color: #FDF7F7;
   font-family: Geneva;
   font-size: 48px;
-  line-height: 64px;
+  margin: auto;
+  padding-right: 36px;
   text-align: center;
 }
