@@ -14,7 +14,7 @@ module.exports = {
     modules: [
       'node_modules'
     ],
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.css']
   },
   module: {
     rules: [
@@ -26,15 +26,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'autoprefixer-loader?browsers=last 3 versions',
-            'sass-loader?outputStyle=expanded'
-          ]
-        })
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader'},
+          { loader: 'css-loader'}
+        ]
       },
       {
         test: /\.(jpe?g|png|svg)$/i,
