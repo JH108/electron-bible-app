@@ -68,3 +68,12 @@
   justify-content: center;
   background: linear-gradient(135deg, #FDB749 0%, #61412B 100%);
 }
+
+/*
+  Use below to make design responsive based on viewport size if time allows
+*/
+/*@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape)*/
