@@ -31,12 +31,14 @@
 }
 
 .the-heavens-declare {
+  position: absolute;
   height: 76px;
   width: 662px;
   color: #9EDB58;
   font-family: "Apple Chancery";
-  font-size: 24px;
+  font-size: 36px;
   line-height: 38px;
+  align-self: center;
   text-align: center;
 }
 
@@ -57,4 +59,12 @@
   margin: auto;
   padding-right: 36px;
   text-align: center;
+}
+
+.orange-overlay {
+  height: 834px;
+  width: 1024px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(135deg, #FDB749 0%, #61412B 100%);
 }
