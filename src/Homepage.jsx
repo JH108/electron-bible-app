@@ -8,9 +8,12 @@ class Homepage extends Component {
     super(props);
   }
   render() {
+    const {
+      toggleToc
+    } = this.props;
     return (
       <div className="homepage">
-        <Header />
+        <Header toggleToc={toggleToc} />
         <div className="orange-overlay">
           <h1 className="the-heavens-declare">
             The heavens declare the glory of God, and the sky above proclaims his handiwork.
