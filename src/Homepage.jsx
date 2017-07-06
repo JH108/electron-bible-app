@@ -9,7 +9,10 @@ class Homepage extends Component {
   }
   render() {
     const {
-      toggleToc
+      toggleToc,
+      selectedChapter,
+      selectedBook,
+      activateReadingView
     } = this.props;
     return (
       <div className="homepage">
@@ -20,7 +23,11 @@ class Homepage extends Component {
           </h1>
           <img src={'images/fullsizeoutput_155.png'}/>
         </div>
-        <Footer />
+        <Footer
+          selectedChapter={selectedChapter}
+          selectedBook={selectedBook}
+          activateReadingView={activateReadingView}
+        />
       </div>
     );
   }

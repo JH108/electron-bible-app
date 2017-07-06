@@ -30,6 +30,10 @@
   margin-left: 36px;
 }
 
+.menu:hover {
+  filter: invert(100%);
+}
+
 .the-heavens-declare {
   position: absolute;
   z-index: 1;
@@ -51,6 +55,10 @@
   font-size: 20px;
   line-height: 31px;
   text-align: center;
+}
+
+.start-reading-now:hover {
+  filter: invert(100%);
 }
 
 .esv-bible {
@@ -129,18 +137,24 @@
 
 .tb-chapters-body {
   max-height: 835px;
-  display: grid;
-  width: 400px;
+  overflow-y: auto;
+  display: flex;
+  width: 420px;
   align-self: center;
-  grid-template-columns: 15% 15% 15% 15% 15% 15%;
-  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  flex-flow: column wrap;
 }
 
 .tb-chapters-body-text {
-  color: #FDF7F7;
+  width: 45px;
+  height: 30px;
+  border: 1px solid #979797;
+  border-radius: 6px;
+  background-color: #FDF7F7;
+  color: #7D7542;
+  text-align: center;
   font-family: Geneva;
   font-size: 24px;
-  margin-left: 10px;
+  margin: 10px;
 }
 
 .tb-books {

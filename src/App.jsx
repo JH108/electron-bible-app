@@ -8,10 +8,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: null,
+      bible: null,
       tocActive: false,
       selectedBook: 'Genesis',
-      selectedChapter: null
+      selectedChapter: 1
     }
   }
   toggleToc() {
@@ -30,15 +30,18 @@ class App extends Component {
       selectedChapter: chapter
     });
   }
-  // componentDidMount() {
-  //   fetch('/bible')
-  //     .then(data => data.json())
-  //     .then(json => {
-  //       this.setState({
-  //         book: json
-  //       })
-  //     });
-  // }
+  activateReadingView({ selectedBook, selectedChapter }) {
+    this.props.history.push(`/read?book=${selectedBook}&chapter=${selectedChapter}`);
+  }
+  componentDidMount() {
+    // fetch('/bible')
+    //   .then(data => data.json())
+    //   .then(json => {
+    //     this.setState({
+    //       bible: json
+    //     })
+    //   });
+  }
   render() {
     return (
       <div className="app">
@@ -55,6 +58,9 @@ class App extends Component {
         <Homepage
           tocActive={this.state.tocActive}
           toggleToc={this.toggleToc.bind(this)}
+          selectedChapter={this.state.selectedChapter}
+          selectedBook={this.state.selectedBook}
+          activateReadingView={this.activateReadingView.bind(this)}
         />
       </div>
     );

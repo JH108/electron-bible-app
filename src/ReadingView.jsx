@@ -7,24 +7,34 @@ class ReadingView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chapter: null
-    };
+      chapter: null,
+      book: null,
+      chapterText: null
+    }
   }
   componentDidMount() {
-    fetch('/bible/Joel/1')
+    let url = this.props.location.search;
+    fetch(`/bible/query${url}`)
       .then(body => body.json())
       .then(json => this.setState({
-        chapter: json
+        chapter: json.chapter,
+        book: json.book,
+        chapterText: json.chapterText
       }));
   }
   render() {
     const {
-      chapter
+      chapter,
+      book,
+      chapterText
     } = this.state;
     return (
       <div className="reading-view">
-        <Header />
-        <Chapter chapter={chapter} />
+        <Header
+          chapter={chapter}
+          book={book}
+        />
+        <Chapter chapter={chapterText} />
         <Footer />
       </div>
     );

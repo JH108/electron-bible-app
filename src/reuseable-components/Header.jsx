@@ -1,12 +1,16 @@
 import React from 'react';
 import MenuButton from './MenuButton';
 
-const Header = ({ toggleToc }) => {
+const Header = ({ toggleToc, chapter, book }) => {
   return (
   <div className="header">
     <MenuButton toggleToc={toggleToc}/>
-    <h1 className="esv-bible">
-    ESV Bible</h1>
+    { chapter && book ?
+      <h1 className="esv-bible">
+        { `${book} ${chapter}` }</h1>
+      : <h1 className="esv-bible">
+        ESV Bible</h1>
+      }
   </div>
   );
 };
