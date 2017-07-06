@@ -29,11 +29,21 @@ class App extends Component {
     fetch(`/chapters/${book}`)
       .then(body => body.json())
       .then(json => this.setState({
-        chapters: json
+        chapters: json,
+        selectedBook: book
       }));
   }
   selectChapter(chapter) {
-    console.log(chapter);
+    this.setState({
+      chapter: chapter,
+      book: this.state.selectedBook,
+      selectedChapter: chapter,
+      tocActive: !this.state.tocActive
+    });
+    this.activateReadingView({
+      selectedBook: this.state.selectedBook,
+      selectedChapter: chapter
+    });
   }
   activateReadingView({ selectedBook, selectedChapter }) {
     this.props.history.push(`/read?book=${selectedBook}&chapter=${selectedChapter}`);
