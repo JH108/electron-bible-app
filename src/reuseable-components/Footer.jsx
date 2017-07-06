@@ -6,7 +6,8 @@ const Footer = ({
   selectedBook,
   selectedChapter,
   activateReadingView,
-  readingViewActive
+  readingViewActive,
+  nextChapter
 }) => (
   <div className="footer">
     { readingViewActive ?
@@ -17,7 +18,9 @@ const Footer = ({
         alignItems: 'center'
       }}>
         <PrevChapter />
-        <NextChapter />
+        <NextChapter
+          nextChapter={nextChapter}
+        />
       </div>
       :
       <h1

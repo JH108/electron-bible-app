@@ -19,7 +19,8 @@ class ReadingView extends Component {
       chapterText,
       toggleToc,
       readingViewActive,
-      toggleReadingView
+      toggleReadingView,
+      nextChapter
     } = this.props;
     return (
       <div className="reading-view">
@@ -33,6 +34,7 @@ class ReadingView extends Component {
         </div>
         <Footer
           readingViewActive={readingViewActive}
+          nextChapter={nextChapter}
         />
       </div>
     );
