@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bible: null,
+      booksOfBible: null,
       tocActive: false,
       selectedBook: 'Genesis',
       selectedChapter: 1,
@@ -50,6 +50,11 @@ class App extends Component {
           chapterText: json.chapterText
         }));
     }
+    fetch('/booksOfBible')
+      .then(body => body.json())
+      .then(json => this.setState({
+        booksOfBible: json
+      }));
   }
   render() {
     const {

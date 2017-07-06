@@ -2,7 +2,7 @@ const fs = require('fs');
 const bible = require('./esvBibleJson.json');
 const _ = require('lodash');
 
-const booksOfBibleInOrder = [
+export const booksOfBible = [
   'Genesis',
   'Exodus',
   'Leviticus',
@@ -85,7 +85,7 @@ const countChapters = esvBible => {
     cc = 0;
   }
   return bookArray.sort((a, b) => {
-    return booksOfBibleInOrder.indexOf(a.name) - booksOfBibleInOrder.indexOf(b.name);
+    return booksOfBible.indexOf(a.name) - booksOfBible.indexOf(b.name);
   });
 };
 
@@ -107,32 +107,43 @@ const getBook = (book) => {
   return bookChapters;
 };
 
-let formattedBible = {};
+/*
+  Used to format each book of the bible
 
-_.forEach(bible, (book, key) => {
-  let formattedBook = getBook(book);
-  formattedBible[key] = formattedBook;
-});
-// make sure the formatted bible and the original json bible contain the same books and number of chapters
-  // formatting concatenated all verses which is why I don't check for those to match
-if (JSON.stringify(countChapters(bible)) === JSON.stringify(countChapters(formattedBible))) {
-  fs.writeFile('./formattedEsvBible.json', JSON.stringify(formattedBible), 'utf8', function(err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log('file was saved');
+  let formattedBible = {};
+  _.forEach(bible, (book, key) => {
+    let formattedBook = getBook(book);
+    formattedBible[key] = formattedBook;
   });
-}
+*/
 
-// code to read the bible from a file with slight modifications depending on the file type
-// const bibleStream = fs.createReadStream('./esvBibleJson.json');
-// let bible = '';
-// bibleStream
-//   .on('data', chunk => {
-//     bible += chunk;
-//   })
-//   .on('end', () => {
-//     let parsedBible = JSON.parse(bible);
-//     // countChapters(parsedBible);
-//     getBookOfJoel(parsedBible.Joel);
-//   });
+/*
+  Use code below to create a file with a bible formatted to only contain books and chapters.  Each chapter will contain a string with all the verses and no verse numbers
+
+  the if statement is to ensure the formatted bible and the original json bible contain the same books and number of chapters
+
+  if (JSON.stringify(countChapters(bible)) === JSON.stringify(countChapters(formattedBible))) {
+    fs.writeFile('./formattedEsvBible.json', JSON.stringify(formattedBible), 'utf8', function(err) {
+      if (err) {
+        console.log(err);
+      }
+      console.log('file was saved');
+    });
+  }
+*/
+
+/*
+  Code below is to read the bible from a file with slight modifications depending on the file type
+
+  const bibleStream = fs.createReadStream('./esvBibleJson.json');
+  let bible = '';
+  bibleStream
+    .on('data', chunk => {
+      bible += chunk;
+    })
+    .on('end', () => {
+      let parsedBible = JSON.parse(bible);
+      // countChapters(parsedBible);
+      getBookOfJoel(parsedBible.Joel);
+    });
+*/
