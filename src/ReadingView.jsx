@@ -13,6 +13,7 @@ class ReadingView extends Component {
     }
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     let url = this.props.location.search;
     fetch(`/bible/query${url}`)
       .then(body => body.json())
@@ -30,12 +31,14 @@ class ReadingView extends Component {
     } = this.state;
     return (
       <div className="reading-view">
-        <Header
-          chapter={chapter}
-          book={book}
-        />
-        <Chapter chapter={chapterText} />
-        <Footer />
+        <div>
+          <Header
+            chapter={chapter}
+            book={book}
+          />
+          <Chapter chapter={chapterText} />
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -34,6 +34,7 @@ class App extends Component {
     this.props.history.push(`/read?book=${selectedBook}&chapter=${selectedChapter}`);
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     // fetch('/bible')
     //   .then(data => data.json())
     //   .then(json => {

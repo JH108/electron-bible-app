@@ -78,6 +78,11 @@
   background: linear-gradient(135deg, #FDB749 0%, #61412B 100%);
 }
 
+.reading-view {
+  display: flex;
+  justify-content: center;
+}
+
 .reading-view-content {
   height: 834px;
   width: 1024px;
