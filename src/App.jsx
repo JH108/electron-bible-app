@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Chapter from './Chapter';
 import Homepage from './Homepage';
 import TableOfContents from './TableOfContents';
 import ReadingView from './ReadingView';
@@ -16,13 +15,19 @@ class App extends Component {
       selectedChapter: 1,
       chapter: null,
       book: null,
-      chapterText: null
+      chapterText: null,
+      readingViewActive: false
     }
   }
   toggleToc() {
     let prevState = !this.state.tocActive;
     this.setState({
       tocActive: prevState
+    });
+  }
+  toggleReadingView() {
+    this.setState({
+      readingViewActive: !this.state.readingViewActive
     });
   }
   selectBook(book) {
@@ -81,7 +86,8 @@ class App extends Component {
       book,
       chapterText,
       booksOfBible,
-      chapters
+      chapters,
+      readingViewActive
     } = this.state;
     return (
       <div className="app">
@@ -102,6 +108,8 @@ class App extends Component {
           <ReadingView
             tocActive={tocActive}
             toggleToc={this.toggleToc.bind(this)}
+            readingViewActive={readingViewActive}
+            toggleReadingView={this.toggleReadingView.bind(this)}
             selectedChapter={selectedChapter}
             selectedBook={selectedBook}
             chapter={chapter}

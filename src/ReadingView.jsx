@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Footer from './reuseable-components/Footer';
 import Header from './reuseable-components/Header';
-import Chapter from './Chapter';
 
 class ReadingView extends Component {
   constructor(props) {
@@ -9,13 +8,18 @@ class ReadingView extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (!this.props.readingViewActive) {
+      this.props.toggleReadingView();
+    }
   }
   render() {
     const {
       chapter,
       book,
       chapterText,
-      toggleToc
+      toggleToc,
+      readingViewActive,
+      toggleReadingView
     } = this.props;
     return (
       <div className="reading-view">
@@ -24,8 +28,12 @@ class ReadingView extends Component {
           book={book}
           toggleToc={toggleToc}
         />
-        <Chapter chapter={chapterText} />
-        <Footer />
+        <div className="reading-view-content">
+          <p className="reading-view-text">{ chapterText }</p>
+        </div>
+        <Footer
+          readingViewActive={readingViewActive}
+        />
       </div>
     );
   }
