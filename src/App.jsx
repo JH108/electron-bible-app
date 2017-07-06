@@ -30,20 +30,26 @@ class App extends Component {
       .then(body => body.json())
       .then(json => this.setState({
         chapters: json,
-        selectedBook: book
+        selectedBook: book,
+        book,
       }));
   }
   selectChapter(chapter) {
-    this.setState({
-      chapter: chapter,
-      book: this.state.selectedBook,
-      selectedChapter: chapter,
-      tocActive: !this.state.tocActive
-    });
-    this.activateReadingView({
-      selectedBook: this.state.selectedBook,
-      selectedChapter: chapter
-    });
+    let url = `?book=${this.state.selectedBook}&chapter=${chapter}`
+
+    fetch(`/bible/query${url}`)
+      .then(body => body.json())
+      .then(json => this.setState({
+        chapter: json.chapter,
+        book: json.book,
+        selectedChapter: json.chapter,
+        chapterText: json.chapterText,
+        tocActive: !this.state.tocActive
+      }))
+      .then(() => this.activateReadingView({
+        selectedBook: this.state.selectedBook,
+        selectedChapter: this.state.selectedChapter
+      }));
   }
   activateReadingView({ selectedBook, selectedChapter }) {
     this.props.history.push(`/read?book=${selectedBook}&chapter=${selectedChapter}`);
