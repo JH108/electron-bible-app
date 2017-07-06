@@ -32,6 +32,7 @@
 
 .the-heavens-declare {
   position: absolute;
+  z-index: 1;
   height: 76px;
   width: 662px;
   color: #9EDB58;
@@ -85,6 +86,40 @@
   font-family: Geneva;
   font-size: 26px;
   line-height: 30px;
+}
+
+.table-of-contents {
+  height: 908px;
+  width: 851px;
+  background-color: #918F84;
+  box-shadow: 4px 4px 5px 2px rgba(0,0,0,0.5);
+  margin: 20px 0 0 0;
+  position: absolute;
+  display: flex;
+  z-index: 2;
+}
+
+.tb-headers {
+  height: 73px;
+  width: 425px;
+  background-color: #D8D8D8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tb-header-text {
+  color: #7D7542;
+  font-family: Geneva;
+  font-size: 48px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.line {
+  height: 908px;
+  background-color: #D8D8D8;
+  width: 1.5px;
 }
 
 /*

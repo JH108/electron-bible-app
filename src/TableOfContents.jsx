@@ -7,10 +7,23 @@ class TableOfContents extends Component {
     super(props);
   }
   render() {
+    const {
+      selectedChapter,
+      selectedBook,
+      selectBook,
+      selectChapter
+    } = this.props;
     return (
-      <div>
-        <Books />
-        <Chapters />
+      <div className="table-of-contents">
+        <Books
+          selectedBook={selectedBook}
+          selectBook={selectBook}
+        />
+        <span className="line"></span>
+        <Chapters
+          selectedChapter={selectedChapter}
+          selectChapter={selectChapter}
+        />
       </div>
     );
   }

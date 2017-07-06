@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Chapters = () => (
-  <div className="tb-chapters">
-    All the chapters for the selected book go here
+  <div className="tb-headers">
+    <h1 className="tb-header-text">Chapters</h1>
   </div>
 );
 
