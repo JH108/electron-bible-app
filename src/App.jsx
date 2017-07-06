@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
 import Chapter from './Chapter';
-import { forEach, map } from 'lodash';
 import Homepage from './Homepage';
+import TableOfContents from './TableOfContents';
+import { forEach, map } from 'lodash';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: null
+      book: null,
+      tocActive: false,
+      selectedBook: 'Genesis',
+      selectedChapter: null
     }
+  }
+  toggleToc() {
+    let prevState = !this.state.tocActive;
+    this.setState({
+      tocActive: prevState
+    });
+  }
+  selectBook(book) {
+    this.setState({
+      selectedBook: book
+    });
+  }
+  selectChapter(chapter) {
+    this.setState({
+      selectedChapter: chapter
+    });
   }
   // componentDidMount() {
   //   fetch('/bible')
@@ -22,15 +42,20 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-      <Homepage />
         {
-          map(this.state.book, (chapter, key) => (
-            <Chapter
-              chapter={chapter}
-              key={key}
-            />
-          ))
+          this.state.tocActive ?
+          <TableOfContents
+            selectedChapter={this.state.selectedChapter}
+            selectedBook={this.state.selectedBook}
+            selectBook={this.selectBook.bind(this)}
+            selectChapter={this.selectChapter.bind(this)}
+          />
+          : null
         }
+        <Homepage
+          tocActive={this.state.tocActive}
+          toggleToc={this.toggleToc.bind(this)}
+        />
       </div>
     );
   }
