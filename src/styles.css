@@ -122,6 +122,46 @@
   width: 1.5px;
 }
 
+.tb-chapters {
+  display: flex;
+  flex-direction: column;
+}
+
+.tb-chapters-body {
+  max-height: 835px;
+  display: grid;
+  width: 400px;
+  align-self: center;
+  grid-template-columns: 15% 15% 15% 15% 15% 15%;
+  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+}
+
+.tb-chapters-body-text {
+  color: #FDF7F7;
+  font-family: Geneva;
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.tb-books {
+  display: flex;
+  flex-direction: column;
+}
+
+.tb-books-body {
+  height: 835px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.tb-books-body-text {
+  color: #FDF7F7;
+  font-family: Geneva;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0 0 0 15px;
+}
+
 /*
   Use below to make design responsive based on viewport size if time allows
 */
