@@ -7,7 +7,8 @@ const Footer = ({
   selectedChapter,
   activateReadingView,
   readingViewActive,
-  nextChapter
+  nextChapter,
+  prevChapter
 }) => (
   <div className="footer">
     { readingViewActive ?
@@ -17,7 +18,9 @@ const Footer = ({
         justifyContent: 'space-around',
         alignItems: 'center'
       }}>
-        <PrevChapter />
+        <PrevChapter
+          prevChapter={prevChapter}
+        />
         <NextChapter
           nextChapter={nextChapter}
         />
