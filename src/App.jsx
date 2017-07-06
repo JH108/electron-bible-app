@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Chapter from './Chapter';
 import Homepage from './Homepage';
 import TableOfContents from './TableOfContents';
+import ReadingView from './ReadingView';
 import { forEach, map } from 'lodash';
 
 class App extends Component {
@@ -11,7 +12,10 @@ class App extends Component {
       bible: null,
       tocActive: false,
       selectedBook: 'Genesis',
-      selectedChapter: 1
+      selectedChapter: 1,
+      chapter: null,
+      book: null,
+      chapterText: null
     }
   }
   toggleToc() {
@@ -35,34 +39,59 @@ class App extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0);
-    // fetch('/bible')
-    //   .then(data => data.json())
-    //   .then(json => {
-    //     this.setState({
-    //       bible: json
-    //     })
-    //   });
+    console.log(this.props.location);
+    if (this.props.location.search) {
+      let url = this.props.location.search;
+      fetch(`/bible/query${url}`)
+        .then(body => body.json())
+        .then(json => this.setState({
+          chapter: json.chapter,
+          book: json.book,
+          chapterText: json.chapterText
+        }));
+    }
   }
   render() {
+    const {
+      selectedChapter,
+      selectedBook,
+      tocActive,
+      chapter,
+      book,
+      chapterText
+    } = this.state;
     return (
       <div className="app">
         {
           this.state.tocActive ?
           <TableOfContents
-            selectedChapter={this.state.selectedChapter}
-            selectedBook={this.state.selectedBook}
+            selectedChapter={selectedChapter}
+            selectedBook={selectedBook}
             selectBook={this.selectBook.bind(this)}
             selectChapter={this.selectChapter.bind(this)}
           />
           : null
         }
-        <Homepage
-          tocActive={this.state.tocActive}
-          toggleToc={this.toggleToc.bind(this)}
-          selectedChapter={this.state.selectedChapter}
-          selectedBook={this.state.selectedBook}
-          activateReadingView={this.activateReadingView.bind(this)}
-        />
+        {
+          this.props.location.pathname === '/read' ?
+          <ReadingView
+            tocActive={tocActive}
+            toggleToc={this.toggleToc.bind(this)}
+            selectedChapter={selectedChapter}
+            selectedBook={selectedBook}
+            chapter={chapter}
+            book={book}
+            chapterText={chapterText}
+            activateReadingView={this.activateReadingView.bind(this)}
+          />
+          : <Homepage
+            tocActive={tocActive}
+            toggleToc={this.toggleToc.bind(this)}
+            selectedChapter={selectedChapter}
+            selectedBook={selectedBook}
+            activateReadingView={this.activateReadingView.bind(this)}
+          />
+        }
       </div>
     );
   }

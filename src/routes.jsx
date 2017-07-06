@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom';
 const routes = (
   <div>
     <Route exact path='/' component={App} />
-    <Route path='/read' component={ReadingView} />
+    <Route path='/read' component={App} />
   </div>
 );
 
