@@ -14,13 +14,15 @@ class ReadingView extends Component {
     const {
       chapter,
       book,
-      chapterText
+      chapterText,
+      toggleToc
     } = this.props;
     return (
       <div className="reading-view">
         <Header
           chapter={chapter}
           book={book}
+          toggleToc={toggleToc}
         />
         <Chapter chapter={chapterText} />
         <Footer />

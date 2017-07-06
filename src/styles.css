@@ -32,6 +32,7 @@
 
 .menu:hover {
   filter: invert(100%);
+  cursor: pointer;
 }
 
 .the-heavens-declare {
@@ -50,7 +51,7 @@
 .start-reading-now {
   height: 33px;
   width: 236px;
-  color: #C0390B;
+  color: #FDF7F7;
   font-family: "Apple Chancery";
   font-size: 20px;
   line-height: 31px;
@@ -59,6 +60,8 @@
 
 .start-reading-now:hover {
   filter: invert(100%);
+  color: #7ED321;
+  cursor: pointer;
 }
 
 .esv-bible {
@@ -81,6 +84,7 @@
 .reading-view {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .reading-view-content {
@@ -146,7 +150,7 @@
   display: flex;
   width: 420px;
   align-self: center;
-  flex-flow: column wrap;
+  flex-flow: wrap;
 }
 
 .tb-chapters-body-text {
@@ -160,6 +164,11 @@
   font-family: Geneva;
   font-size: 24px;
   margin: 10px;
+}
+
+.tb-chapters-body-text:hover {
+  background-color: #7ED321;
+  cursor: pointer;
 }
 
 .tb-books {
@@ -179,6 +188,11 @@
   font-size: 24px;
   line-height: 32px;
   margin: 0 0 0 15px;
+}
+
+.tb-books-body-text:hover {
+  color: #7ED321;
+  cursor: pointer;
 }
 
 /*

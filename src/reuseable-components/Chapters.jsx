@@ -7,7 +7,7 @@ const Chapters = ({ chapters, selectedChapter, selectChapter }) => (
       <h1 className="tb-header-text">Chapters</h1>
     </div>
     <div className="tb-chapters-body">
-      {map(chapters.reverse(), (chapters, key) => (
+      {map(chapters, (chapters, key) => (
         <h1 className="tb-chapters-body-text" key={key}>{ chapters }</h1>
       ))}
     </div>
