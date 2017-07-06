@@ -1,7 +1,8 @@
 const fs = require('fs');
+const bible = require('./esvBibleJson.json');
 const _ = require('lodash');
 
-export const booksOfBibleInOrder = [
+const booksOfBibleInOrder = [
   'Genesis',
   'Exodus',
   'Leviticus',
@@ -70,30 +71,25 @@ export const booksOfBibleInOrder = [
   'Revelation'
 ];
 
-const countChaptersAndVerses = esvBible => {
+const countChapters = esvBible => {
   let bookArray = [],
       currentBook = '',
       currentChapter = '',
-      cc = 0,
-      vc = 0;
+      cc = 0;
   for (let book in esvBible) {
-    _.forEach(esvBible[book], (c) => cc++)
-    _.forEach(esvBible[book], (c) => _.forEach(c, (v) => vc++));
+    _.forEach(esvBible[book], (c) => cc++);
     bookArray.push({
       name: book,
-      chapters: cc,
-      verses: vc
+      chapters: cc
     });
     cc = 0;
-    vc = 0;
-
   }
   return bookArray.sort((a, b) => {
     return booksOfBibleInOrder.indexOf(a.name) - booksOfBibleInOrder.indexOf(b.name);
   });
 };
 
-export const getBook = (book) => {
+const getBook = (book) => {
   let bookChapters = {};
   let verses = [];
 
@@ -105,10 +101,28 @@ export const getBook = (book) => {
     bookChapters[key] = verses.sort((a, b) => {
       return parseInt(a.key) - parseInt(b.key)
     }).map(v => v.verse).join(' ');
+    verses = [];
   });
 
   return bookChapters;
 };
+
+let formattedBible = {};
+
+_.forEach(bible, (book, key) => {
+  let formattedBook = getBook(book);
+  formattedBible[key] = formattedBook;
+});
+// make sure the formatted bible and the original json bible contain the same books and number of chapters
+  // formatting concatenated all verses which is why I don't check for those to match
+if (JSON.stringify(countChapters(bible)) === JSON.stringify(countChapters(formattedBible))) {
+  fs.writeFile('./formattedEsvBible.json', JSON.stringify(formattedBible), 'utf8', function(err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log('file was saved');
+  });
+}
 
 // code to read the bible from a file with slight modifications depending on the file type
 // const bibleStream = fs.createReadStream('./esvBibleJson.json');
@@ -119,6 +133,6 @@ export const getBook = (book) => {
 //   })
 //   .on('end', () => {
 //     let parsedBible = JSON.parse(bible);
-//     // countChaptersAndVerses(parsedBible);
+//     // countChapters(parsedBible);
 //     getBookOfJoel(parsedBible.Joel);
 //   });
