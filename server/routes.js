@@ -13,7 +13,7 @@ const Routes = (app) => {
     res.send(JSON.stringify(chapters));
   });
 
-  app.get('booksOfBible', (req, res) => {
+  app.get('/booksOfBible', (req, res) => {
     res.send(JSON.stringify(booksOfBible));
   });
 

@@ -10,6 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       booksOfBible: null,
+      chapters: null,
       tocActive: false,
       selectedBook: 'Genesis',
       selectedChapter: 1,
@@ -25,21 +26,20 @@ class App extends Component {
     });
   }
   selectBook(book) {
-    this.setState({
-      selectedBook: book
-    });
+    fetch(`/chapters/${book}`)
+      .then(body => body.json())
+      .then(json => this.setState({
+        chapters: json
+      }));
   }
   selectChapter(chapter) {
-    this.setState({
-      selectedChapter: chapter
-    });
+    console.log(chapter);
   }
   activateReadingView({ selectedBook, selectedChapter }) {
     this.props.history.push(`/read?book=${selectedBook}&chapter=${selectedChapter}`);
   }
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log(this.props.location);
     if (this.props.location.search) {
       let url = this.props.location.search;
       fetch(`/bible/query${url}`)
@@ -63,7 +63,9 @@ class App extends Component {
       tocActive,
       chapter,
       book,
-      chapterText
+      chapterText,
+      booksOfBible,
+      chapters
     } = this.state;
     return (
       <div className="app">
@@ -74,6 +76,8 @@ class App extends Component {
             selectedBook={selectedBook}
             selectBook={this.selectBook.bind(this)}
             selectChapter={this.selectChapter.bind(this)}
+            chapters={chapters}
+            booksOfBible={booksOfBible}
           />
           : null
         }

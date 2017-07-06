@@ -8,7 +8,11 @@ const Books = ({ books, selectedBook, selectBook }) => (
     </div>
     <div className="tb-books-body">
       {map(books, (book, key) => (
-        <h1 className="tb-books-body-text" key={key}>{ book }</h1>
+        <h1
+          className="tb-books-body-text"
+          key={key}
+          onClick={(event) => selectBook(event.target.textContent)}
+        >{ book }</h1>
       ))}
     </div>
   </div>
