@@ -26,6 +26,43 @@
   justify-content: center;
 }
 
+.next-chapter {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+};
+
+/*
+For some reason I could not get these styles to apply to their respective div. After spending 15 minutes on it I did an inline style and moved on.
+.prev-chapter {
+  display: flex;
+  align-items: center;
+};*/
+
+.next-chapter img {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.prev-chapter img {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.prev-text {
+  font-size: 26px;
+  color: #FDF7F7;
+  margin-left: 15px;
+  text-align: center;
+}
+
+.next-text {
+  font-size: 26px;
+  color: #FDF7F7;
+  margin-right: 15px;
+  text-align: center;
+}
+
 .menu {
   margin-left: 36px;
 }

@@ -18,7 +18,6 @@ const Routes = (app) => {
   });
 
   app.get('/bible/query', (req, res) => {
-    console.log(req.query);
     let book = req.query.book;
     let chapter = req.query.chapter;
     res.send(JSON.stringify({

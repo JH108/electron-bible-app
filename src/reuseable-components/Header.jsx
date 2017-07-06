@@ -1,8 +1,11 @@
 import React from 'react';
 import MenuButton from './MenuButton';
 
-const Header = ({ toggleToc, chapter, book }) => {
-  return (
+const Header = ({
+  toggleToc,
+  chapter,
+  book
+}) => (
   <div className="header">
     <MenuButton toggleToc={toggleToc}/>
     { chapter && book ?
@@ -10,9 +13,8 @@ const Header = ({ toggleToc, chapter, book }) => {
         { `${book} ${chapter}` }</h1>
       : <h1 className="esv-bible">
         ESV Bible</h1>
-      }
+    }
   </div>
-  );
-};
+);
 
 export default Header;
