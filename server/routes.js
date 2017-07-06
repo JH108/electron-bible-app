@@ -1,10 +1,15 @@
 import path from 'path';
 import bible from './esvBibleJson.json';
 import formattedBible from './formattedEsvBible.json';
+import { forEach } from 'lodash';
 
 const Routes = (app) => {
-  app.get('/bible', (req, res) => {
-    res.send(formattedBible);
+  app.get('/chapters/:book', (req, res) => {
+    let book = req.params.book;
+    let chapters = [];
+    forEach(formattedBible[book], (chapter, key) => chapters.push(key));
+    chapters = chapters.sort((a, b) => a - b);
+    res.send(JSON.stringify(chapters));
   });
   app.get('/bible/query', (req, res) => {
     let book = req.query.book;
