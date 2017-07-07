@@ -11,7 +11,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:JH108/reader-for-esv.git',
       path: '/home/ubuntu/reader-for-esv',
-      'post-deploy': 'npm install && webpack --config webpack.config.js && pm2 startOrRestart ecosystem.config.js'
+      'post-deploy': 'npm install && npm run build && pm2 startOrRestart ecosystem.config.js'
     }
   }
 }
