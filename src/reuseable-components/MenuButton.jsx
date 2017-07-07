@@ -2,7 +2,7 @@ import React from 'react';
 
 const MenuButton = ({ toggleToc, tocActive }) => {
   return (
-    <svg className="menu" width="51" height="42" viewBox="0 0 51 42" xmlns="http://www.w3.org/2000/svg" onMouseDown={() => {
+    <svg className="menu" width="51" height="42" viewBox="0 0 51 42" xmlns="http://www.w3.org/2000/svg" onClick={() => {
         if (!tocActive) {
             toggleToc()
         }

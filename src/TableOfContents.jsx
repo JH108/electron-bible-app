@@ -8,11 +8,11 @@ class TableOfContents extends Component {
   }
   // Lines 10-26 are to enable the closing of the modal on a click outside its box
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside.bind(this));
+    document.addEventListener('click', this.handleClickOutside.bind(this));
   }
 
   componentWillUnmout() {
-    document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
+    document.removeEventListener('click', this.handleClickOutside.bind(this));
   }
 
   setRef(node) {
