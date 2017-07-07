@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Homepage from './Homepage';
 import TableOfContents from './TableOfContents';
 import ReadingView from './ReadingView';
-import { forEach, map } from 'lodash';
 
 class App extends Component {
   constructor(props) {
@@ -13,8 +12,6 @@ class App extends Component {
       tocActive: false,
       selectedBook: 'Genesis',
       selectedChapter: 1,
-      chapter: null,
-      book: null,
       chapterText: null,
       readingViewActive: false
     }
@@ -35,6 +32,8 @@ class App extends Component {
   }
 
   prevChapter() {
+    window.scrollTo(0, 0);
+
     let currentChapter = this.state.selectedChapter;
     let currentBook = this.state.selectedBook;
     let chapters = this.state.chapters;
@@ -45,15 +44,16 @@ class App extends Component {
       currentBook = books[books.indexOf(currentBook) - 1] || 'Revelation';
       fetch(`/chapters/${currentBook}`)
         .then(body => body.json())
-        .then(json => currentChapter = json[json.length - 1])
+        .then(json => this.setState({
+          chapters: json
+        }))
         .then(() => {
+          currentChapter = this.state.chapters.length.toString();
           let url = `?book=${currentBook}&chapter=${currentChapter}`
 
           fetch(`/bible/query${url}`)
             .then(body => body.json())
             .then(json => this.setState({
-              chapter: json.chapter,
-              book: json.book,
               selectedChapter: json.chapter,
               selectedBook: json.book,
               chapterText: json.chapterText
@@ -71,8 +71,6 @@ class App extends Component {
       fetch(`/bible/query${url}`)
         .then(body => body.json())
         .then(json => this.setState({
-          chapter: json.chapter,
-          book: json.book,
           selectedChapter: json.chapter,
           selectedBook: json.book,
           chapterText: json.chapterText
@@ -85,15 +83,15 @@ class App extends Component {
   }
 
   nextChapter() {
+    window.scrollTo(0, 0);
+
     let currentChapter = this.state.selectedChapter;
     let currentBook = this.state.selectedBook;
     let chapters = this.state.chapters;
     let books = this.state.booksOfBible;
 
-    console.log(chapters[chapters.length - 1], parseInt(chapters[chapters.length - 1]), currentChapter, parseInt(currentChapter));
     if (parseInt(currentChapter) + 1 > parseInt(chapters[chapters.length - 1])) {
       currentChapter = '1';
-      console.log(books[books.indexOf(currentBook) + 1]);
       currentBook = books[books.indexOf(currentBook) + 1] || 'Genesis';
     } else {
       currentChapter = parseInt(currentChapter) + 1;
@@ -105,8 +103,6 @@ class App extends Component {
     fetch(`/bible/query${url}`)
       .then(body => body.json())
       .then(json => this.setState({
-        chapter: json.chapter,
-        book: json.book,
         selectedChapter: json.chapter,
         selectedBook: json.book,
         chapterText: json.chapterText
@@ -122,8 +118,7 @@ class App extends Component {
       .then(body => body.json())
       .then(json => this.setState({
         chapters: json,
-        selectedBook: book,
-        book,
+        selectedBook: book
       }));
   }
 
@@ -133,8 +128,7 @@ class App extends Component {
     fetch(`/bible/query${url}`)
       .then(body => body.json())
       .then(json => this.setState({
-        chapter: json.chapter,
-        book: json.book,
+        selectedBook: json.book,
         selectedChapter: json.chapter,
         chapterText: json.chapterText,
         tocActive: !this.state.tocActive
@@ -153,15 +147,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
 
     if (this.props.location.search) {
       let url = this.props.location.search;
       fetch(`/bible/query${url}`)
         .then(body => body.json())
         .then(json => this.setState({
-          chapter: json.chapter,
-          book: json.book,
+          selectedChapter: json.chapter,
+          selectedBook: json.book,
           chapterText: json.chapterText
         }));
     }
@@ -175,6 +168,7 @@ class App extends Component {
       .then(json => this.setState({
         chapters: json
       }));
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -182,8 +176,6 @@ class App extends Component {
       selectedChapter,
       selectedBook,
       tocActive,
-      chapter,
-      book,
       chapterText,
       booksOfBible,
       chapters,
@@ -213,8 +205,6 @@ class App extends Component {
             toggleReadingView={this.toggleReadingView.bind(this)}
             selectedChapter={selectedChapter}
             selectedBook={selectedBook}
-            chapter={chapter}
-            book={book}
             chapterText={chapterText}
             activateReadingView={this.activateReadingView.bind(this)}
             nextChapter={this.nextChapter.bind(this)}

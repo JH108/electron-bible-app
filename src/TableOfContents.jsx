@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import Books from './reuseable-components/Books';
 import Chapters from './reuseable-components/Chapters';
 
-const chapters = (() => {
-  let nums = [];
-  for (var i = 50; i > 0; i--) {
-    nums.push(i.toString())
-  }
-  return nums;
-})()
-
 class TableOfContents extends Component {
   constructor(props) {
     super(props);

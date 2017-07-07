@@ -3,14 +3,14 @@ import MenuButton from './MenuButton';
 
 const Header = ({
   toggleToc,
-  chapter,
-  book
+  selectedChapter,
+  selectedBook
 }) => (
   <div className="header">
     <MenuButton toggleToc={toggleToc}/>
-    { chapter && book ?
+    { selectedChapter && selectedBook ?
       <h1 className="esv-bible">
-        { `${book} ${chapter}` }</h1>
+        { `${selectedBook} ${selectedChapter}` }</h1>
       : <h1 className="esv-bible">
         ESV Bible</h1>
     }

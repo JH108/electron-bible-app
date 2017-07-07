@@ -67,6 +67,11 @@ For some reason I could not get these styles to apply to their respective div. A
   margin-left: 36px;
 }
 
+.clicked-menu {
+  filter: invert(100%);
+  margin-left: 36px;
+}
+
 .menu:hover {
   filter: invert(100%);
   cursor: pointer;

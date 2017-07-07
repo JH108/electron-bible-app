@@ -7,15 +7,15 @@ class ReadingView extends Component {
     super(props);
   }
   componentDidMount() {
-    window.scrollTo(0, 0);
     if (!this.props.readingViewActive) {
       this.props.toggleReadingView();
     }
+    window.scrollTo(0, 0);
   }
   render() {
     const {
-      chapter,
-      book,
+      selectedChapter,
+      selectedBook,
       chapterText,
       toggleToc,
       readingViewActive,
@@ -26,8 +26,8 @@ class ReadingView extends Component {
     return (
       <div className="reading-view">
         <Header
-          chapter={chapter}
-          book={book}
+          selectedChapter={selectedChapter}
+          selectedBook={selectedBook}
           toggleToc={toggleToc}
         />
         <div className="reading-view-content">
