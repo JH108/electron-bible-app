@@ -1,12 +1,16 @@
 .app {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
 }
 
 .homepage {
-  width: 1024px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .header {
@@ -127,6 +131,7 @@ For some reason I could not get these styles to apply to their respective div. A
   display: flex;
   justify-content: center;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .reading-view-content {
@@ -155,7 +160,7 @@ For some reason I could not get these styles to apply to their respective div. A
   margin: 20px 0 0 0;
   position: absolute;
   display: flex;
-  z-index: 2;
+  z-index: 4;
 }
 
 .tb-headers {

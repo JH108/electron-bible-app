@@ -183,18 +183,20 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div className="app">
+      <div className={this.state.tocActive ? "app" : "app"} onClick={() => {
+        this.state.tocActive ? this.toggleToc() : null;
+      }}>
         {
           this.state.tocActive ?
-          <TableOfContents
-            selectedChapter={selectedChapter}
-            selectedBook={selectedBook}
-            selectBook={this.selectBook.bind(this)}
-            selectChapter={this.selectChapter.bind(this)}
-            chapters={chapters}
-            booksOfBible={booksOfBible}
-            toggleToc={this.toggleToc.bind(this)}
-          />
+            <TableOfContents
+              selectedChapter={selectedChapter}
+              selectedBook={selectedBook}
+              selectBook={this.selectBook.bind(this)}
+              selectChapter={this.selectChapter.bind(this)}
+              chapters={chapters}
+              booksOfBible={booksOfBible}
+              toggleToc={this.toggleToc.bind(this)}
+            />
           : null
         }
         {
