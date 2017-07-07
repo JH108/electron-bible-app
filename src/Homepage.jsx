@@ -15,12 +15,16 @@ class Homepage extends Component {
       toggleToc,
       selectedChapter,
       selectedBook,
-      activateReadingView
+      activateReadingView,
+      tocActive
     } = this.props;
 
     return (
       <div className="homepage">
-        <Header toggleToc={toggleToc} />
+        <Header
+          toggleToc={toggleToc}
+          tocActive={tocActive}
+        />
         <div className="orange-overlay">
           <h1 className="the-heavens-declare">
             The heavens declare the glory of God, and the sky above proclaims his handiwork.

@@ -183,9 +183,7 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div className={this.state.tocActive ? "app" : "app"} onClick={() => {
-        this.state.tocActive ? this.toggleToc() : null;
-      }}>
+      <div className="app">
         {
           this.state.tocActive ?
             <TableOfContents

@@ -1,20 +1,25 @@
+body {
+  margin: 0;
+}
+
 .app {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  margin: 0;
 }
 
 .homepage {
+  height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
 .header {
-  height: 100px;
+  min-height: 50px;
   width: 1024px;
   background-color: #918F84;
   display: flex;
@@ -22,7 +27,7 @@
 }
 
 .footer {
-  height: 90px;
+  min-height: 42px;
   width: 1024px;
   background-color: #918F84;
   display: flex;
@@ -57,6 +62,8 @@ For some reason I could not get these styles to apply to their respective div. A
   font-size: 26px;
   color: #FDF7F7;
   margin-left: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -114,29 +121,30 @@ For some reason I could not get these styles to apply to their respective div. A
   color: #FDF7F7;
   font-family: Geneva;
   font-size: 48px;
-  margin: auto;
+  margin: 0 auto;
   padding-right: 36px;
   text-align: center;
 }
 
 .orange-overlay {
-  height: 834px;
   width: 1024px;
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   background: linear-gradient(135deg, #FDB749 0%, #61412B 100%);
 }
 
 .reading-view {
   display: flex;
+  height: 100vh;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  flex-grow: 1;
 }
 
 .reading-view-content {
-  height: 834px;
   width: 1024px;
+  flex-grow: 1;
   background-color: #A7A7A7;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -144,7 +152,6 @@ For some reason I could not get these styles to apply to their respective div. A
 
 .reading-view-text {
   padding: 10px;
-  height: 834px;
   width: 95%;
   color: #FDF7F7;
   font-family: Geneva;
@@ -153,12 +160,13 @@ For some reason I could not get these styles to apply to their respective div. A
 }
 
 .table-of-contents {
-  height: 908px;
+  height: 100vh;
+  max-height: 908px;
   width: 851px;
   background-color: #918F84;
   box-shadow: 4px 4px 5px 2px rgba(0,0,0,0.5);
-  margin: 20px 0 0 0;
-  position: absolute;
+  margin: 10px 0 0 0;
+  position: fixed;
   display: flex;
   z-index: 4;
 }
