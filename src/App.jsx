@@ -30,8 +30,6 @@ class App extends Component {
   }
 
   prevChapter() {
-    window.scrollTo(0, 0);
-
     let currentChapter = this.state.selectedChapter;
     let currentBook = this.state.selectedBook;
     let chapters = this.state.chapters;
@@ -81,8 +79,6 @@ class App extends Component {
   }
 
   nextChapter() {
-    window.scrollTo(0, 0);
-
     let currentChapter = this.state.selectedChapter;
     let currentBook = this.state.selectedBook;
     let chapters = this.state.chapters;
@@ -137,10 +133,7 @@ class App extends Component {
       }));
   }
 
-  activateReadingView({
-    selectedBook,
-    selectedChapter
-  }) {
+  activateReadingView({ selectedBook, selectedChapter }) {
     this.props.history.push(`/read?book=${selectedBook}&chapter=${selectedChapter}`);
   }
 
@@ -167,8 +160,6 @@ class App extends Component {
       .then(json => this.setState({
         chapters: json
       }));
-
-    window.scrollTo(0, 0);
   }
 
   render() {

@@ -6,14 +6,15 @@ class TableOfContents extends Component {
   constructor(props) {
     super(props);
   }
+  // Lines 10-26 are to enable the closing of the modal on a click outside its box
   componentDidMount() {
-    window.scrollTo(0, 0);
-  // Lines 12-25 are to enable the closing of the modal on a click outside its box
     document.addEventListener('mousedown', this.handleClickOutside.bind(this));
   }
+
   componentWillUnmout() {
     document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
   }
+
   setRef(node) {
     this.ref = node;
   }
@@ -23,6 +24,7 @@ class TableOfContents extends Component {
       this.props.toggleToc();
     }
   }
+
   render() {
     const {
       selectedChapter,

@@ -10,9 +10,13 @@ class ReadingView extends Component {
     if (!this.props.readingViewActive) {
       this.props.toggleReadingView();
     }
-
-    window.scrollTo(0, 0);
   }
+
+  componentDidUpdate() {
+    this.refs.textContent
+    this.refs.textContent.scrollTop = 0;
+  }
+
   render() {
     const {
       selectedChapter,
@@ -34,7 +38,7 @@ class ReadingView extends Component {
           toggleToc={toggleToc}
           tocActive={tocActive}
         />
-        <div className="reading-view-content">
+        <div ref="textContent" className="reading-view-content">
           <p className="reading-view-text">{ chapterText }</p>
         </div>
         <Footer

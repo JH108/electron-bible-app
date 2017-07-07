@@ -143,6 +143,8 @@ For some reason I could not get these styles to apply to their respective div. A
 }
 
 .reading-view-content {
+  height: 100vh;
+  max-height: 834px;
   width: 1024px;
   flex-grow: 1;
   background-color: #A7A7A7;
