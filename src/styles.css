@@ -8,19 +8,25 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 
 .homepage {
   height: 100vh;
+  width: 100vw;
+  max-width: 1024px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0;
 }
 
 .header {
   min-height: 50px;
-  width: 1024px;
+  width: 100vw;
+  max-width: 1024px;
   background-color: #918F84;
   display: flex;
   align-items: center
@@ -28,7 +34,8 @@ body {
 
 .footer {
   min-height: 42px;
-  width: 1024px;
+  width: 100vw;
+  max-width: 1024px;
   background-color: #918F84;
   display: flex;
   align-items: center;
@@ -71,6 +78,8 @@ For some reason I could not get these styles to apply to their respective div. A
   font-size: 26px;
   color: #FDF7F7;
   margin-right: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -91,8 +100,9 @@ For some reason I could not get these styles to apply to their respective div. A
 .the-heavens-declare {
   position: absolute;
   z-index: 1;
-  height: 76px;
-  width: 662px;
+  min-height: 76px;
+  width: 90vw;
+  max-width: 662px;
   color: #9EDB58;
   font-family: "Apple Chancery";
   font-size: 36px;
@@ -140,12 +150,14 @@ For some reason I could not get these styles to apply to their respective div. A
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0;
 }
 
 .reading-view-content {
   height: 100vh;
   max-height: 834px;
-  width: 1024px;
+  width: 100vw;
+  max-width: 1024px;
   flex-grow: 1;
   background-color: #A7A7A7;
   overflow-y: scroll;
@@ -153,7 +165,7 @@ For some reason I could not get these styles to apply to their respective div. A
 }
 
 .reading-view-text {
-  padding: 10px;
+  padding: 0 10px 10px 10px;
   width: 95%;
   color: #FDF7F7;
   font-family: Geneva;
@@ -162,12 +174,13 @@ For some reason I could not get these styles to apply to their respective div. A
 }
 
 .table-of-contents {
-  height: 100vh;
+  height: 97vh;
   max-height: 908px;
-  width: 851px;
+  width: 85vw;
+  max-width: 851px;
   background-color: #918F84;
   box-shadow: 4px 4px 5px 2px rgba(0,0,0,0.5);
-  margin: 10px 0 0 0;
+  margin-top: 10px;
   position: fixed;
   display: flex;
   z-index: 4;
@@ -175,7 +188,8 @@ For some reason I could not get these styles to apply to their respective div. A
 
 .tb-headers {
   height: 73px;
-  width: 425px;
+  min-height: 50px;
+  max-width: 425px;
   background-color: #D8D8D8;
   display: flex;
   justify-content: center;
@@ -186,7 +200,6 @@ For some reason I could not get these styles to apply to their respective div. A
   color: #7D7542;
   font-family: Geneva;
   font-size: 48px;
-  line-height: 64px;
   text-align: center;
 }
 
@@ -197,6 +210,9 @@ For some reason I could not get these styles to apply to their respective div. A
 }
 
 .tb-chapters {
+  height: 97vh;
+  max-height: 908px;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -205,7 +221,7 @@ For some reason I could not get these styles to apply to their respective div. A
   max-height: 835px;
   overflow-y: auto;
   display: flex;
-  width: 420px;
+  max-width: 420px;
   align-self: center;
   flex-flow: wrap;
 }
@@ -229,12 +245,16 @@ For some reason I could not get these styles to apply to their respective div. A
 }
 
 .tb-books {
+  height: 97vh;
+  max-height: 908px;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
 
 .tb-books-body {
-  height: 835px;
+  height: 94vh;
+  max-height: 835px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -244,7 +264,7 @@ For some reason I could not get these styles to apply to their respective div. A
   font-family: Geneva;
   font-size: 24px;
   line-height: 32px;
-  margin: 0 0 0 15px;
+  margin-left: 15px;
 }
 
 .tb-books-body-text:hover {
@@ -255,8 +275,17 @@ For some reason I could not get these styles to apply to their respective div. A
 /*
   Use below to make design responsive based on viewport size if time allows
 */
-/*@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: landscape)*/
+@media only screen
+  and (min-width: 375px)
+  and (max-width: 667px) {
+    .esv-bible {
+      font-size: 36px;
+    }
+    .tb-books-body-text {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    .tb-header-text {
+      font-size: 36px;
+    }
+  }
