@@ -193,6 +193,7 @@ class App extends Component {
             selectChapter={this.selectChapter.bind(this)}
             chapters={chapters}
             booksOfBible={booksOfBible}
+            toggleToc={this.toggleToc.bind(this)}
           />
           : null
         }
