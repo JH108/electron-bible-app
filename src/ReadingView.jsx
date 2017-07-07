@@ -10,6 +10,7 @@ class ReadingView extends Component {
     if (!this.props.readingViewActive) {
       this.props.toggleReadingView();
     }
+
     window.scrollTo(0, 0);
   }
   render() {
@@ -23,6 +24,7 @@ class ReadingView extends Component {
       nextChapter,
       prevChapter
     } = this.props;
+
     return (
       <div className="reading-view">
         <Header

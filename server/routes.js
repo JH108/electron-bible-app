@@ -26,6 +26,7 @@ const Routes = (app) => {
       chapterText: formattedBible[book][chapter]
     }));
   });
+
   // since the app is an spa I need to serve the html everytime a new url is hit. Otherwise you cannot navigate by typing an url into the address bar
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));

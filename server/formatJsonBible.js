@@ -76,6 +76,7 @@ const countChapters = esvBible => {
       currentBook = '',
       currentChapter = '',
       cc = 0;
+
   for (let book in esvBible) {
     _.forEach(esvBible[book], (c) => cc++);
     bookArray.push({
@@ -84,6 +85,7 @@ const countChapters = esvBible => {
     });
     cc = 0;
   }
+
   return bookArray.sort((a, b) => {
     return booksOfBible.indexOf(a.name) - booksOfBible.indexOf(b.name);
   });

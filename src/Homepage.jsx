@@ -17,6 +17,7 @@ class Homepage extends Component {
       selectedBook,
       activateReadingView
     } = this.props;
+
     return (
       <div className="homepage">
         <Header toggleToc={toggleToc} />

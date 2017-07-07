@@ -18,10 +18,8 @@ class App extends Component {
   }
 
   toggleToc() {
-    let prevState = !this.state.tocActive;
-
     this.setState({
-      tocActive: prevState
+      tocActive: !this.state.tocActive
     });
   }
 
@@ -147,7 +145,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-
     if (this.props.location.search) {
       let url = this.props.location.search;
       fetch(`/bible/query${url}`)
@@ -158,16 +155,19 @@ class App extends Component {
           chapterText: json.chapterText
         }));
     }
+
     fetch('/booksOfBible')
       .then(body => body.json())
       .then(json => this.setState({
         booksOfBible: json
       }));
+
     fetch(`/chapters/${this.state.selectedBook}`)
       .then(body => body.json())
       .then(json => this.setState({
         chapters: json
       }));
+
     window.scrollTo(0, 0);
   }
 
