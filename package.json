@@ -31,15 +31,10 @@
     "url-loader": "^0.5.9",
     "webpack": "^2.6.1"
   },
-  "devDependencies": {
-    "pm2": "^2.5.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "start": "node server/index.js",
-    "deploy": "pm2 deploy ecosystem.config.js production",
-    "restart": "pm2 startOrRestart ecosystem.config.js"
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
