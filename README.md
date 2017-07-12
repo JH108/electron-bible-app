@@ -1,5 +1,5 @@
-# reader-for-esv
-A simple online reader for the ESV Bible.
+# Electron Bible App
+Electron bible app that uses the ESV version.
 
 # How to use
 - Clone the repository and then run the following commands from the root of the repository:
@@ -14,5 +14,4 @@ npm run start
 ```
 - Go to localhost:3000 to view the app.
 
-# Sources
-Copy of ESV obtained from: https://raw.githubusercontent.com/honza/bibles/master/ESV/ESV.json
+# Download the App Here:
